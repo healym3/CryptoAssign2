@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -37,7 +38,35 @@ T leftRotate(T x, int m, int size){
     return (x<<m) | firstM;
 }
 
-
+//void lfsrM(unsigned int pValuesInt, unsigned int initInt, int iterations){
+//    int x = pValuesInt;
+//    unsigned int y = initInt;
+//    int count = 0;
+//    int temp2 = initInt;
+//    int temp1;
+//
+//    vector<int> pValues;
+//    for (int i = 0; i < sizeof(pValuesInt); ++i) {
+//        temp1 = x >> i;
+//        if (temp1 % 2 == 1)
+//            pValues.push_back(i);
+//    }
+//
+//    while (count < iterations){
+//        cout << y % 2;
+//        unsigned int nextBit = 0;
+//        unsigned int bitInInitInt = 0;
+//        for(int i : pValues) {
+//            bitInInitInt = (y>>i) % 2;
+//            nextBit ^= bitInInitInt;
+//        }
+//
+//        y = y >> 1;
+//        y = y | (nextBit << 31);
+//
+//        count++;
+//    }
+//}
 
 void lfsr(unsigned int path, unsigned int initStates, unsigned int randomBits){
     if (randomBits < 1) return;
@@ -65,9 +94,8 @@ void lfsr(unsigned int path, unsigned int initStates, unsigned int randomBits){
         //Compute nextBit
         unsigned int nextBit = 0;
         //XOR bit at each of the feedback indexes with 1
-        for(int n = 0; n < feedbackIndexes; n++){
+        for (int n = 0; n < feedbackIndexes; n++)
             nextBit = nextBit ^ getBit(lfsr, feedback[n]);
-        }
 
         lfsr = (lfsr >> 1) | (nextBit << 31);
 
@@ -156,6 +184,8 @@ int gcd(int a, int b){
 int main() {
     cout<<"lfsr(3, 34, 50):" << endl;
     lfsr(3,34,50);
+    cout<<"lfsr(3, 34, 50):" << endl;
+    lfsrM(3,34,50);
 
     cout << "printBits(expansion(1), 64):" << endl;
     printBits(expansion(1),64);
