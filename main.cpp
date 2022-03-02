@@ -185,7 +185,7 @@ int main() {
     cout<<"lfsr(3, 34, 50):" << endl;
     lfsr(3,34,50);
     cout<<"lfsr(3, 34, 50):" << endl;
-    lfsrM(3,34,50);
+    //lfsrM(3,34,50);
 
     cout << "printBits(expansion(1), 64):" << endl;
     printBits(expansion(1),64);
